@@ -11,6 +11,13 @@ from dotenv import load_dotenv
 import re 
 
 load_dotenv()
+# --- CLOUD FIX: Bridge Gemini Key to App ---
+try:
+    if "GEMINI_API_KEY" in st.secrets:
+        os.environ["API_KEY"] = st.secrets["GEMINI_API_KEY"]
+except:
+    pass
+# -------------------------------------------
 
 # --- THEME CONFIGURATION ---
 THEMES = {
@@ -490,4 +497,5 @@ else:
                 # Download button at bottom of code tab
                 st.markdown("---")
                 zip_buffer = create_zip_from_folder(st.session_state.active_project)
+
                 st.download_button("Download Code", data=zip_buffer, file_name=f"{st.session_state.active_project}.zip", mime="application/zip", use_container_width=True)
