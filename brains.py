@@ -13,7 +13,7 @@ API_KEY = os.getenv("GEMINI_API_KEY") or st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=API_KEY)
 
 # We use the Pro model for maximum reasoning capability
-MODEL_NAME = "gemini-1.5-pro"
+MODEL_NAME = "gemini-1.5-flash"
 
 def talk_to_brain(system_prompt, user_prompt):
     """
@@ -37,4 +37,5 @@ def talk_to_brain(system_prompt, user_prompt):
 
     except Exception as e:
         print(f"Error communicating with Gemini: {e}")
+
         return None
